@@ -143,7 +143,7 @@ DATABASES = {
 }
 
 # for 외부 디비 연결
-POSTGRES_LOCALLY = True    # or  False      <===== True 면 postgres   False면 local sqlite3
+POSTGRES_LOCALLY = False    # or  False      <===== True 면 postgres   False면 local sqlite3
 if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
     DATABASES['default'] = dj_database_url.parse(env("DATABASE_URL"))
 
@@ -203,15 +203,22 @@ if ENVIRONMENT == "production" or POSTGRES_LOCALLY == True:
             "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
             },
     }
+
+    # for cloudinary
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': env('CLOUD_NAME'),
+        'API_KEY': env('CLOUD_API_KEY'),
+        'API_SECRET': env('CLOUD_API_SECRET'),    
+    }
 else:
     MEDIA_ROOT = BASE_DIR / 'media'
 
-# for cloudinary
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUD_NAME'),
-    'API_KEY': env('CLOUD_API_KEY'),
-    'API_SECRET': env('CLOUD_API_SECRET'),    
-}
+# # for cloudinary
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': env('CLOUD_NAME'),
+#     'API_KEY': env('CLOUD_API_KEY'),
+#     'API_SECRET': env('CLOUD_API_SECRET'),    
+# }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
