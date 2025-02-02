@@ -22,7 +22,21 @@ from a_users.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
+# for Sitemaps
+from django.views.generic.base import TemplateView
+from django.contrib.sitemaps.views import sitemap
+from a_posts.sitemaps import *
+
+sitemaps = {
+    'static' : StaticSitemap,
+    'categories' : CategorySitemap,
+    'postpages' : PostpageSitemap
+}
+
 urlpatterns = [
+    # for Sitemaps
+    path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+    path('robots.txt/', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),   
     # for theboss
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     # path('admin/', admin.site.urls),
