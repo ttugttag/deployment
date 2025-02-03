@@ -153,7 +153,7 @@ DATABASES = {
 }
 
 # for 외부 디비 연결
-POSTGRES_LOCALLY = False    # or  False      <===== True 면 postgres   False면 local sqlite3
+POSTGRES_LOCALLY = True    # or  False      <===== True 면 postgres   False면 local sqlite3
 if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
     DATABASES['default'] = dj_database_url.parse(env("DATABASE_URL"))
 
