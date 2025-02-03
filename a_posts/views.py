@@ -236,6 +236,26 @@ def reply_sent(request, pk):
     # return redirect('post', comment.parent_post.id)
     return render(request, 'snippets/add_reply.html', context)
 
+@login_required
+def reply_form(request, pk):
+    reply = get_object_or_404(Reply, id=pk)
+    replyform = NestedReplyCreateForm()
+
+    if request.method == 'POST':
+        form = NestedReplyCreateForm(request.POST)
+        if form.is_valid:
+            reply_nested = form.save(commit=False)
+            reply_nested.author = request.user
+            reply_nested.parent_reply = reply 
+            reply_nested.level = reply.level + 1 
+            reply_nested.save()
+            return render(request, 'a_posts/reply.html', {'reply': reply_nested})
+
+    context = {
+        'reply' : reply,
+        'replyform': replyform
+    }
+    return render(request, 'snippets/add_replyform.html', context)
 
 @login_required
 def comment_delete_view(request, pk):
@@ -249,16 +269,22 @@ def comment_delete_view(request, pk):
     return render(request, 'a_posts/comment_delete.html', {'comment' : post})
 
 
+# @login_required
+# def reply_delete_view(request, pk):
+#     reply = get_object_or_404(Reply, id=pk, author=request.user)
+    
+#     if request.method == "POST":
+#         reply.delete()
+#         messages.success(request, 'Reply deleted')
+#         return redirect('post', reply.parent_comment.parent_post.id )
+        
+#     return render(request, 'a_posts/reply_delete.html', {'reply' : reply})
+
 @login_required
 def reply_delete_view(request, pk):
     reply = get_object_or_404(Reply, id=pk, author=request.user)
-    
-    if request.method == "POST":
-        reply.delete()
-        messages.success(request, 'Reply deleted')
-        return redirect('post', reply.parent_comment.parent_post.id )
-        
-    return render(request, 'a_posts/reply_delete.html', {'reply' : reply})
+    reply.delete()
+    return HttpResponse('')   
 
 '''
 def like_toggle(model):
