@@ -63,7 +63,8 @@ urlpatterns = [
     path('profile/verify-email/', profile_verify_email, name="profile-verify-email"),
     path('commentsent/<pk>/', comment_sent, name="comment-sent"),
     path('comment/delete/<pk>/', comment_delete_view, name='comment-delete'),  
-    path('replysent/<pk>/', reply_sent, name='reply-sent'),  
+    path('replysent/<pk>/', reply_sent, name='reply-sent'),
+    path('replyform/<pk>/', reply_form, name='reply-form'),  
     path('reply/delete/<pk>/', reply_delete_view, name='reply-delete'),  
 ]
 # for media
