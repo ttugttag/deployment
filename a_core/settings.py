@@ -53,7 +53,7 @@ ALLOWED_HOSTS = ["*"]
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1',
 #                  'www.ttugttag.sbs','ttugttag.sbs',]
 # CSRF_TRUSTED_ORIGINS =[ 'https://*.onrender.com',
-#                         'https://*.ttugttag.sbs/', 'https://ttugttag.sbs/',]
+#                         'https://*.ttugttag.sbs', 'https://ttugttag.sbs',]
 INTERNAL_IPS = (
     '127.0.0.1',
     'localhost:8000'
