@@ -53,7 +53,7 @@ ALLOWED_HOSTS = ["*"]
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1',
 #                  'www.ttugttag.sbs','ttugttag.sbs',]
 # CSRF_TRUSTED_ORIGINS =[ 'https://*.onrender.com',
-#                         'https://*.ttugttag.sbs/', 'https://ttugttag.sbs/',]
+#                         'https://*.ttugttag.sbs', 'https://ttugttag.sbs',]
 INTERNAL_IPS = (
     '127.0.0.1',
     'localhost:8000'
@@ -153,7 +153,7 @@ DATABASES = {
 }
 
 # for 외부 디비 연결
-POSTGRES_LOCALLY = False    # or  False      <===== True 면 postgres   False면 local sqlite3
+POSTGRES_LOCALLY = True    # or  False      <===== True 면 postgres   False면 local sqlite3
 if ENVIRONMENT == 'production' or POSTGRES_LOCALLY == True:
     DATABASES['default'] = dj_database_url.parse(env("DATABASE_URL"))
 

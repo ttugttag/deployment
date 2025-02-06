@@ -54,4 +54,15 @@ class ReplyCreateForm(ModelForm):
         }
         labels = {
             'body': ''
-        }        
+        }  
+
+class NestedReplyCreateForm(ModelForm):
+    class Meta:
+        model = Reply
+        fields = ['body']
+        widgets = {
+            'body' : forms.TextInput(attrs={'autofocus': True, 'class': "!text-sm bg-gray-200 !p-0 !pl-2 !h-8"})
+        }
+        labels = {
+            'body': ''
+        }  

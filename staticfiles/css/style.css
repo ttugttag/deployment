@@ -712,6 +712,10 @@ video {
   margin-left: 0.375rem;
 }
 
+.ml-10 {
+  margin-left: 2.5rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -810,6 +814,10 @@ video {
 
 .aspect-\[3\/2\] {
   aspect-ratio: 3/2;
+}
+
+.\!h-8 {
+  height: 2rem !important;
 }
 
 .h-10 {
@@ -1084,6 +1092,11 @@ video {
   border-top-width: 1px;
 }
 
+.\!bg-gray-800 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1)) !important;
+}
+
 .bg-amber-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(252 211 77 / var(--tw-bg-opacity, 1));
@@ -1129,6 +1142,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
+.bg-zinc-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 244 245 / var(--tw-bg-opacity, 1));
+}
+
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
 }
@@ -1144,6 +1162,10 @@ video {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.\!p-0 {
+  padding: 0px !important;
 }
 
 .\!p-8 {
@@ -1215,11 +1237,6 @@ video {
   padding-bottom: 6rem;
 }
 
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .\!pb-0 {
   padding-bottom: 0px !important;
 }
@@ -1228,12 +1245,20 @@ video {
   padding-bottom: 2.5rem !important;
 }
 
+.\!pl-2 {
+  padding-left: 0.5rem !important;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
 
 .pl-8 {
   padding-left: 2rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
 }
 
 .pt-3 {
@@ -1290,6 +1315,11 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 .font-bold {
@@ -1544,18 +1574,8 @@ p {
   margin-bottom: 1rem;
 }
 
-form p {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
 label, input {
   display: inline-block;
-}
-
-form p label {
-  width: 7rem;
 }
 
 label {
@@ -1715,6 +1735,32 @@ input[name="remember"] {
   text-overflow: ellipsis;
   white-space: nowrap;
   line-height: 1.5;
+}
+
+.allauth .helptext {
+  margin-top: 1rem;
+  display: block;
+}
+
+.allauth .card a {
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
+}
+
+.allauth form[action="/accounts/signup/"] ul {
+  display: none;
+}
+
+.allauth form[action="/accounts/signup/"] ul.errorlist {
+  display: block;
+}
+
+.allauth label[for="id_password2"] {
+  display: none;
+}
+
+.allauth input#id_password2 {
+  margin-bottom: 1rem;
 }
 
 .hover\:scale-95:hover {
